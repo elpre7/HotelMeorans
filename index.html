@@ -22,7 +22,11 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{
+      scroll-behavior:smooth;
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+    }
     body{
       margin:0;
       background:var(--paper);
@@ -43,7 +47,7 @@
     }
 
     .caps{
-      font-size:9px;
+      font-size:11px;
       line-height:1;
       font-weight:600;
       letter-spacing:.18em;
@@ -77,6 +81,7 @@
       background:rgba(239,229,216,.92);
       color:var(--ink);
       padding:14px 15px;
+      min-height:48px;
       display:flex;
       align-items:center;
       gap:11px;
@@ -96,6 +101,7 @@
 
     .nav-logo{
       justify-self:center;
+      padding:8px 12px;
       color:white;
       text-align:center;
       text-shadow:0 1px 14px rgba(0,0,0,.18);
@@ -104,14 +110,14 @@
     .nav-logo strong{
       display:block;
       font-family:"Italiana",serif;
-      font-size:19px;
+      font-size:clamp(17px,1.6vw,20px);
       font-weight:400;
       letter-spacing:.09em;
     }
     .nav-logo span{
       display:block;
       margin-top:4px;
-      font-size:6px;
+      font-size:11px;
       letter-spacing:.28em;
       text-transform:uppercase;
     }
@@ -125,10 +131,15 @@
       border:0;
       background:var(--peach);
       color:var(--ink);
-      padding:16px 14px 14px;
-      min-width:70px;
+      padding:12px 14px;
+      min-width:74px;
+      min-height:48px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
       text-align:center;
-      font-size:8px;
+      font-size:11px;
       font-weight:600;
       line-height:1.05;
       letter-spacing:.1em;
@@ -145,11 +156,13 @@
       background:var(--forest);
       color:white;
       transform:translateY(-102%);
-      transition:transform .75s cubic-bezier(.19,.78,.24,1);
+      transition:transform .75s cubic-bezier(.19,.78,.24,1),visibility .75s;
+      visibility:hidden;
+      overflow-y:auto;
       display:grid;
       grid-template-columns:1.1fr .9fr;
     }
-    .overlay.open{transform:none}
+    .overlay.open{transform:none;visibility:visible}
     .overlay-links{
       padding:110px 7vw 55px;
       display:flex;
@@ -167,7 +180,7 @@
     }
     .overlay-links a small{
       font-family:"DM Sans",sans-serif;
-      font-size:8px;
+      font-size:11px;
       letter-spacing:.15em;
       text-transform:uppercase;
       opacity:.45;
@@ -189,7 +202,7 @@
       left:34px;
       bottom:35px;
       color:rgba(255,255,255,.72);
-      font-size:11px;
+      font-size:13px;
       line-height:1.65;
     }
 
@@ -269,7 +282,7 @@
       display:block;
       margin-top:25px;
       font-family:"DM Sans",sans-serif;
-      font-size:8px;
+      font-size:11px;
       font-weight:500;
       letter-spacing:.36em;
       text-transform:uppercase;
@@ -285,7 +298,7 @@
     .hero-copy{
       width:min(320px,100%);
       color:rgba(255,255,255,.78);
-      font-size:11px;
+      font-size:clamp(13px,1.05vw,15px);
       line-height:1.65;
     }
     .scroll-dot{
@@ -304,13 +317,13 @@
     }
     .hero-score strong{
       font-family:"Italiana",serif;
-      font-size:35px;
+      font-size:clamp(28px,2.6vw,36px);
       font-weight:400;
     }
     .hero-score span{
       display:block;
       margin-top:4px;
-      font-size:7px;
+      font-size:11px;
       letter-spacing:.16em;
       text-transform:uppercase;
     }
@@ -346,15 +359,25 @@
     }
     .editorial-card p{
       margin:0;
-      font-size:10px;
+      font-size:clamp(13px,.95vw,15px);
       line-height:1.6;
       color:#555e57;
     }
     .editorial-card .mini-link{
+      position:relative;
       display:inline-block;
       margin-top:24px;
       padding-bottom:3px;
       border-bottom:1px solid currentColor;
+    }
+    .editorial-card .mini-link::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:50%;
+      transform:translateY(-50%);
+      height:44px;
     }
 
     /* YOUR STAY */
@@ -384,13 +407,13 @@
     .stay-details h3{
       margin:0;
       font-family:"Italiana",serif;
-      font-size:34px;
+      font-size:clamp(24px,2.8vw,34px);
       font-weight:400;
     }
     .stay-details p{
       width:min(680px,100%);
       margin:0;
-      font-size:10px;
+      font-size:clamp(13px,.95vw,15px);
       line-height:1.65;
       opacity:.78;
     }
@@ -404,14 +427,14 @@
     }
     .house-band h2{
       margin:0 0 12px;
-      font-size:34px;
+      font-size:clamp(24px,3vw,34px);
       font-weight:500;
       letter-spacing:-.04em;
     }
     .house-band p{
       max-width:770px;
       margin:0 auto;
-      font-size:9px;
+      font-size:clamp(13px,.95vw,15px);
       line-height:1.65;
       opacity:.68;
     }
@@ -453,7 +476,7 @@
       margin-top:22px;
       font-family:"DM Sans",sans-serif;
       font-style:normal;
-      font-size:8px;
+      font-size:11px;
       letter-spacing:.14em;
       text-transform:uppercase;
       opacity:.55;
@@ -473,6 +496,7 @@
       z-index:2;
       top:52px;
       left:0;
+      margin:0;
       width:100%;
       text-align:center;
       font-size:clamp(62px,10vw,148px);
@@ -497,13 +521,13 @@
       max-width:390px;
       margin:0;
       color:rgba(255,255,255,.8);
-      font-size:10px;
+      font-size:clamp(13px,.95vw,15px);
       line-height:1.65;
     }
     .look-bottom strong{
       font-family:"Italiana",serif;
       font-weight:400;
-      font-size:34px;
+      font-size:clamp(24px,2.8vw,34px);
     }
 
     /* LOCATION / EVENTS */
@@ -519,12 +543,16 @@
       text-transform:uppercase;
       font-size:clamp(32px,4vw,55px);
     }
+    .location-card address a{
+      display:inline-block;
+      padding:8px 0;
+    }
     .location-card address{
       margin-top:20px;
       padding-top:18px;
       border-top:1px solid var(--line);
       font-style:normal;
-      font-size:9px;
+      font-size:clamp(13px,.95vw,14px);
       line-height:1.7;
     }
 
@@ -546,7 +574,7 @@
     }
     .booking-kicker p{
       margin:0;
-      font-size:9px;
+      font-size:clamp(13px,.95vw,14px);
       opacity:.64;
     }
     .booking-grid{
@@ -564,7 +592,7 @@
     .field label{
       display:block;
       margin-bottom:8px;
-      font-size:7px;
+      font-size:11px;
       font-weight:600;
       letter-spacing:.15em;
       text-transform:uppercase;
@@ -587,7 +615,8 @@
       background:var(--forest);
       color:white;
       padding:0 22px;
-      font-size:8px;
+      min-height:48px;
+      font-size:11px;
       font-weight:600;
       letter-spacing:.14em;
       text-transform:uppercase;
@@ -608,15 +637,22 @@
     }
     .footer-grid h4{
       margin:0 0 14px;
-      font-size:7px;
+      font-size:11px;
       letter-spacing:.16em;
       text-transform:uppercase;
       opacity:.58;
     }
-    .footer-grid a,.footer-grid p{
+    .footer-grid p{
       display:block;
       margin:0 0 8px;
-      font-size:9px;
+      font-size:clamp(13px,.95vw,14px);
+      line-height:1.55;
+    }
+    .footer-grid a{
+      display:block;
+      margin:0;
+      padding:10px 0;
+      font-size:clamp(13px,.95vw,14px);
       line-height:1.55;
     }
     .footer-copy{
@@ -627,7 +663,7 @@
       display:flex;
       justify-content:space-between;
       gap:20px;
-      font-size:7px;
+      font-size:11px;
       letter-spacing:.1em;
       text-transform:uppercase;
       opacity:.5;
@@ -638,8 +674,8 @@
       z-index:90;
       right:15px;
       bottom:15px;
-      width:42px;
-      height:42px;
+      width:48px;
+      height:48px;
       border-radius:50%;
       display:grid;
       place-items:center;
@@ -650,6 +686,10 @@
     }
     .whatsapp:hover{transform:translateY(-3px)}
     .whatsapp svg{width:19px;height:19px}
+
+    @media(max-width:1024px){
+      .editorial-card{width:min(340px,46vw)}
+    }
 
     @media(max-width:850px){
       .overlay{grid-template-columns:1fr}
@@ -664,60 +704,108 @@
       .footer-grid{grid-template-columns:1fr 1fr}
     }
 
+    /* Por debajo de 767px el parallax está desactivado (igual que el sitio de
+       referencia), así que la capa de fondo no necesita el sobredimensionado
+       del 168%: solo agrandaba la imagen 1,68x y la recortaba peor. */
+    @media(max-width:767px){
+      .background-wrapper{top:0;height:100%}
+    }
+
+    /* En móvil las tarjetas dejan de estar posicionadas en absoluto y pasan a
+       fluir dentro de la escena, así no pueden pisarse entre sí. */
     @media(max-width:620px){
       .nav{height:60px;padding:0 8px}
       .menu-btn{padding:12px}
       .menu-btn .caps{display:none}
-      .nav-logo strong{font-size:16px}
-      .nav-action{min-width:54px;padding:14px 8px;font-size:6px}
+      .nav-action{min-width:66px;padding:10px 10px;font-size:10px}
       .nav-actions .nav-action:first-child{display:none}
 
-      .hero-content{padding:90px 14px 26px}
-      .hero-title{font-size:23vw}
-      .hero-bottom{grid-template-columns:1fr auto;gap:16px;margin-top:48px}
+      .hero-content{padding:90px 16px 26px}
+      .hero-title{font-size:22vw}
+      .hero-bottom{grid-template-columns:1fr auto;gap:16px;margin-top:40px}
       .hero-score{display:none}
-      .hero-copy{font-size:9px}
 
+      .scene:not(.hero){
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        padding:88px 0 0;
+      }
       .soul,.stay-scene,.look-scene{min-height:88svh}
       .amenity,.location-scene{min-height:82svh}
 
       .editorial-card{
-        width:72vw;
-        padding:20px 17px;
+        position:static;
+        width:auto;
+        margin:0 16px;
+        padding:22px 20px;
       }
-      .soul-card{top:20%}
-      .stay-card{top:18%}
-      .amenity-card{top:22%}
-      .location-card{top:18%}
-      .editorial-card h2{font-size:38px}
-      .editorial-card p{font-size:8px}
-      .amenity-card .wordmark{font-size:45px}
+      .editorial-card h2{font-size:34px}
+      .amenity-card .wordmark{font-size:44px}
 
-      .stay-details{padding:28px 20px}
-      .stay-details h3{font-size:29px}
-      .stay-details p{font-size:8px}
+      .stay-details{
+        position:static;
+        margin-top:26px;
+        padding:26px 20px 30px;
+      }
+
+      .look-title{
+        position:static;
+        padding:0 16px 20px;
+        font-size:16vw;
+      }
+      .look-bottom{
+        position:static;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+        padding:24px 16px 30px;
+      }
 
       .house-band{padding:44px 20px}
-      .house-band h2{font-size:29px}
-      .house-band p{font-size:8px}
+      .testimonial{min-height:auto;padding:52px 22px}
 
-      .testimonial{min-height:250px;padding:52px 25px}
-      .look-title{top:69px;font-size:18vw}
-      .look-bottom{left:20px;right:20px;bottom:24px}
-      .look-bottom p{font-size:8px}
-      .look-bottom strong{font-size:25px}
-
-      .booking{padding:50px 14px 36px}
+      .booking{padding:50px 16px 36px}
       .booking-grid{grid-template-columns:1fr}
       .field{
         border-right:0;
         border-bottom:1px solid rgba(38,49,41,.22);
       }
       .field:nth-child(2),.field:nth-child(3){border-top:0}
-      .booking button{min-height:65px;border-top:0}
-      .footer{padding-left:14px;padding-right:14px}
+      .booking button{min-height:56px;border-top:0}
+      .footer{padding-left:16px;padding-right:16px}
       .footer-grid{grid-template-columns:1fr 1fr;gap:25px 18px}
       .footer-copy{flex-direction:column}
+    }
+
+    /* Celular horizontal y ventanas bajas: una escena de 100svh no entra, así
+       que crecen con su contenido en lugar de recortarlo. */
+    @media(max-height:520px) and (orientation:landscape){
+      .hero,.hero-content{min-height:auto}
+      .hero-content{padding:86px 5vw 28px}
+      .hero-title{font-size:12vw}
+      .hero-bottom{margin-top:24px}
+
+      .scene:not(.hero){
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        min-height:auto;
+        padding:86px 0 0;
+      }
+      .soul,.stay-scene,.look-scene,.amenity,.location-scene{min-height:auto}
+
+      .editorial-card{
+        position:static;
+        width:min(430px,58vw);
+        margin:0 5vw;
+      }
+      .stay-details{position:static;margin-top:22px}
+      .look-title{position:static;padding:0 5vw 16px;font-size:9vw}
+      .look-bottom{position:static;padding:22px 5vw 26px}
+
+      .overlay-links{padding:76px 6vw 28px}
+      .overlay-links a{font-size:26px;padding:8px 0}
     }
 
     @media(prefers-reduced-motion:reduce){
