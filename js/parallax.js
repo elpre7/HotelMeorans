@@ -16,6 +16,11 @@
  *     </div>
  *   </section>
  *
+ * The moving layer is found as the row's first match of, in order:
+ * .bg-inner, .background-wrapper — so a section can also just use
+ * a single <div class="background-wrapper"><img ...></div> instead
+ * of the nested bg-wrapper/bg-inner pair.
+ *
  * ---- Usage ----
  * 1) <script src="parallax.js"></script>  (once, anywhere on the page)
  * 2) Either:
@@ -52,9 +57,11 @@
 
     injectStyles();
 
+    var bgSelector = options.bgSelector || '.bg-inner, .background-wrapper';
+
     var layers = Array.prototype.map
       .call(document.querySelectorAll(selector), function (row) {
-        return { row: row, bg: row.querySelector('.bg-inner') };
+        return { row: row, bg: row.querySelector(bgSelector) };
       })
       .filter(function (layer) {
         return layer.bg;
