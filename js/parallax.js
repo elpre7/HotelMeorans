@@ -1,64 +1,104 @@
 /**
- * parallax.js
+ * parallax.js — drop this file into any page, no build step, no dependencies.
  *
- * Reproduces Hotel Joaquin's row background parallax: each full-height
- * section has a background image that drifts at a fraction of scroll
- * speed while its text content scrolls at normal speed on top. Their
- * site (Uncode WP theme) ships this exact value in its site config:
- *   SiteParameters.parallax_factor === "0.25"
+ * Reproduces hoteljoaquin.com's row background parallax: each section's
+ * background image drifts at a fraction of scroll speed while its text
+ * content scrolls at normal speed on top. Their site (Uncode WP theme)
+ * ships this exact value in its config: SiteParameters.parallax_factor = 0.25
  *
- * Markup expected per section:
- *   <section class="with-parallax">
+ * ---- Markup (works in ANY page/site) ----
+ *   <section class="with-parallax" data-parallax-auto>
  *     <div class="bg-wrapper">
- *       <div class="bg-inner" style="background-image:url(...)"></div>
+ *       <div class="bg-inner" style="background-image:url('foto.jpg')"></div>
  *     </div>
- *     <div class="row-content">...</div>
+ *     <div class="row-content">
+ *       <h2>Tu texto va acá, con normalidad</h2>
+ *     </div>
  *   </section>
  *
- * Usage:
- *   initParallax('.with-parallax');
+ * ---- Usage ----
+ * 1) <script src="parallax.js"></script>  (once, anywhere on the page)
+ * 2) Either:
+ *    a) add `data-parallax-auto` to every section you want the effect on
+ *       (it self-initializes on load), or
+ *    b) call it yourself for more control:
+ *       initParallax('.with-parallax', { factor: 0.25 });
+ *
+ * The required CSS (position/overflow for the drift to work) is injected
+ * automatically — you only write background-image + your content.
  */
-function initParallax(selector = '.with-parallax', options = {}) {
-  const { factor = 0.25 } = options;
+(function () {
+  'use strict';
 
-  const layers = Array.from(document.querySelectorAll(selector))
-    .map((row) => ({ row, bg: row.querySelector('.bg-inner') }))
-    .filter((layer) => layer.bg);
+  var STYLE_ID = 'parallax-fx-styles';
 
-  if (!layers.length) return () => {};
-
-  let ticking = false;
-
-  function update() {
-    ticking = false;
-    const vh = window.innerHeight;
-    layers.forEach(({ row, bg }) => {
-      const rect = row.getBoundingClientRect();
-      const distanceFromCenter = rect.top + rect.height / 2 - vh / 2;
-      bg.style.transform = `translate3d(0, ${(-distanceFromCenter * factor).toFixed(2)}px, 0)`;
-    });
+  function injectStyles() {
+    if (document.getElementById(STYLE_ID)) return;
+    var style = document.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent =
+      '.with-parallax{position:relative;overflow:hidden;}' +
+      '.with-parallax .bg-wrapper{position:absolute;inset:-25% 0;overflow:hidden;}' +
+      '.with-parallax .bg-inner{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform;}' +
+      '.with-parallax .row-content{position:relative;z-index:1;}';
+    document.head.appendChild(style);
   }
 
-  function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
+  function initParallax(selector, options) {
+    selector = selector || '.with-parallax';
+    options = options || {};
+    var factor = typeof options.factor === 'number' ? options.factor : 0.25;
+    var mobileBreakpoint = typeof options.mobileBreakpoint === 'number' ? options.mobileBreakpoint : 767;
+
+    injectStyles();
+
+    var layers = Array.prototype.map
+      .call(document.querySelectorAll(selector), function (row) {
+        return { row: row, bg: row.querySelector('.bg-inner') };
+      })
+      .filter(function (layer) {
+        return layer.bg;
+      });
+
+    if (!layers.length) return function () {};
+    if (window.matchMedia('(max-width: ' + mobileBreakpoint + 'px)').matches) {
+      return function () {}; // matches SiteParameters.mobile_parallax_allowed = ""
     }
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+      layers.forEach(function (layer) {
+        var rect = layer.row.getBoundingClientRect();
+        var distanceFromCenter = rect.top + rect.height / 2 - vh / 2;
+        layer.bg.style.transform = 'translate3d(0, ' + (-distanceFromCenter * factor).toFixed(2) + 'px, 0)';
+      });
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    return function destroy() {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', update);
+    };
   }
 
-  const mq = window.matchMedia('(max-width: 767px)');
-  if (mq.matches) return () => {}; // matches SiteParameters.mobile_parallax_allowed = ""
+  window.initParallax = initParallax;
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-
-  return () => {
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('resize', update);
-  };
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { initParallax };
-}
+  document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('[data-parallax-auto]')) {
+      initParallax('[data-parallax-auto]');
+    }
+  });
+})();
