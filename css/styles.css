@@ -1,0 +1,117 @@
+:root {
+  --cream: #f3ede1;
+  --card: #ece2c9;
+  --ink: #2a2a26;
+  --accent: #f2b06d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 24px 40px;
+}
+
+.navbar button {
+  border: none;
+  background: var(--accent);
+  padding: 12px 20px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fx-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.fx-section .bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.fx-section--hero .bg {
+  background: linear-gradient(135deg, #e7d9bb, #cbb08a);
+}
+
+.fx-section--stay .bg {
+  background: linear-gradient(135deg, #f1e6d2, #d8c39d);
+}
+
+.fx-section--soul .bg {
+  background: linear-gradient(135deg, #e3caa1, #b98f5f);
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: 12%;
+  padding: 48px;
+  background: var(--card);
+}
+
+.fx-section--soul .card {
+  margin-left: 8%;
+  margin-right: auto;
+  background: rgba(243, 237, 225, 0.85);
+}
+
+.card h2 {
+  margin: 0 0 20px;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--ink);
+  text-decoration: underline;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.spacer {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a8272;
+  font-size: 0.9rem;
+}

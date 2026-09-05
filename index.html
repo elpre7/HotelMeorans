@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Meorans</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <button type="button">Plan Event</button>
+    <button type="button">Book Now</button>
+  </nav>
+
+  <main>
+    <section class="fx-section fx-section--hero">
+      <div class="bg"></div>
+    </section>
+
+    <section class="fx-section fx-section--stay">
+      <div class="bg"></div>
+      <div class="card">
+        <h2>Your Stay</h2>
+        <p>
+          Sit back, relax, and renew your soul. Our individually designed
+          rooms are equal parts chic and playful, with one-of-a-kind vintage
+          pieces, customized furniture and curated artwork.
+        </p>
+        <a href="#">Explore</a>
+      </div>
+    </section>
+
+    <section class="fx-section fx-section--soul">
+      <div class="bg"></div>
+      <div class="card">
+        <h2>Soul is our style</h2>
+        <p>
+          Discover a sanctuary of tranquility within our thoughtfully
+          designed hotel rooms, crafted with natural materials and a serene
+          aesthetic that reflects the surrounding landscape.
+        </p>
+        <a href="#">Explore</a>
+      </div>
+    </section>
+
+    <div class="spacer">Sigue haciendo scroll para ver el resto del sitio</div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/scrollCrossfade.js"></script>
+  <script>
+    initScrollCrossfade('.fx-section');
+  </script>
+</body>
+</html>
