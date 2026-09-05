@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hotel Meorans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -13,44 +15,59 @@
   </nav>
 
   <main>
-    <section class="fx-section fx-section--hero">
-      <div class="bg"></div>
-    </section>
-
-    <section class="fx-section fx-section--stay">
-      <div class="bg"></div>
-      <div class="card">
-        <h2>Your Stay</h2>
-        <p>
-          Sit back, relax, and renew your soul. Our individually designed
-          rooms are equal parts chic and playful, with one-of-a-kind vintage
-          pieces, customized furniture and curated artwork.
-        </p>
-        <a href="#">Explore</a>
+    <section class="with-parallax hero">
+      <div class="bg-wrapper"><div class="bg-inner"></div></div>
+      <div class="row-content">
+        <span class="logo">Hotel Meorans</span>
+        <blockquote>
+          &ldquo;You will never want to leave&rdquo;
+          <cite>&mdash; Vogue</cite>
+        </blockquote>
       </div>
     </section>
 
-    <section class="fx-section fx-section--soul">
-      <div class="bg"></div>
-      <div class="card">
-        <h2>Soul is our style</h2>
-        <p>
-          Discover a sanctuary of tranquility within our thoughtfully
-          designed hotel rooms, crafted with natural materials and a serene
-          aesthetic that reflects the surrounding landscape.
-        </p>
-        <a href="#">Explore</a>
+    <section class="with-parallax soul gradient-l">
+      <div class="bg-wrapper"><div class="bg-inner"></div></div>
+      <div class="row-content">
+        <div class="content--box">
+          <h2>Soul<br />is our style</h2>
+          <p>
+            Discover a sanctuary of tranquility within our thoughtfully designed hotel rooms.
+            Each room serves as a personal retreat, crafted with natural materials and a serene
+            aesthetic that reflects the surrounding coastal landscape. From the soft textures of
+            hand woven textiles to the warm glow of custom lighting, every detail has been
+            carefully considered to provide a restful and restorative experience.
+          </p>
+          <p>
+            The hotel features individually designed guest rooms, each with its own character and
+            layout. All rooms feature Italian linens, premium bath amenities, an in-room minibar,
+            and a record player for guests to enjoy during their stay.
+          </p>
+          <a href="#">Explore</a>
+        </div>
       </div>
     </section>
 
-    <div class="spacer">Sigue haciendo scroll para ver el resto del sitio</div>
+    <section class="with-parallax stay box--right gradient-r-wt">
+      <div class="bg-wrapper"><div class="bg-inner"></div></div>
+      <div class="row-content">
+        <div class="content--box">
+          <h2>Your Stay</h2>
+          <p>
+            Sit back, relax, and renew your soul. Our individually designed rooms are equal
+            parts chic and playful with one-of-a-kind vintage pieces, customized furniture and
+            curated artwork. Luxurious bathrooms feature monolithic imported stone offset by
+            glinting solid brass fixtures.
+          </p>
+          <a href="#">Explore</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="js/scrollCrossfade.js"></script>
+  <script src="js/parallax.js"></script>
   <script>
-    initScrollCrossfade('.fx-section');
+    initParallax('.with-parallax', { factor: 0.25 });
   </script>
 </body>
 </html>
