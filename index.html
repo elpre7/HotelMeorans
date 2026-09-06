@@ -237,6 +237,7 @@
       pointer-events:none;
     }
 
+    .background-wrapper picture{display:block;width:100%;height:100%}
     .background-wrapper img{
       width:100%;
       height:100%;
@@ -855,7 +856,10 @@
     <!-- 01 HERO -->
     <section class="scene hero with-parallax" id="inicio">
       <div class="background-wrapper">
-        <img src="assets/img/hero.jpg" alt="Piscina de Meoran's Apart Hotel con tobogán y solárium">
+        <picture>
+          <source media="(max-width:767px)" srcset="assets/img/hero-m.jpg">
+          <img src="assets/img/hero.jpg" alt="Piscina de Meoran's Apart Hotel con tobogán y solárium">
+        </picture>
       </div>
       <div class="scene-shade"></div>
 
@@ -883,7 +887,10 @@
     <!-- 02 SOUL — enters immediately under hero -->
     <section class="scene soul with-parallax" id="historia">
       <div class="background-wrapper">
-        <img loading="lazy" src="assets/img/soul.jpg" alt="Lobby de Meoran's Apart Hotel, con doble altura, recepción y living">
+        <picture>
+          <source media="(max-width:767px)" srcset="assets/img/soul-m.jpg">
+          <img loading="lazy" src="assets/img/soul.jpg" alt="Lobby de Meoran's Apart Hotel, con doble altura, recepción y living">
+        </picture>
       </div>
       <div class="scene-shade"></div>
 
@@ -900,7 +907,10 @@
     <!-- 03 YOUR STAY -->
     <section class="scene stay-scene with-parallax" id="estancia">
       <div class="background-wrapper">
-        <img loading="lazy" src="assets/img/stay.jpg" alt="Habitación de Meoran's Apart Hotel con cama king y textiles artesanales">
+        <picture>
+          <source media="(max-width:767px)" srcset="assets/img/stay-m.jpg">
+          <img loading="lazy" src="assets/img/stay.jpg" alt="Habitación de Meoran's Apart Hotel con cama king y textiles artesanales">
+        </picture>
       </div>
 
       <article class="editorial-card stay-card">
@@ -934,7 +944,10 @@
     <!-- 05 AMENITY SCENE -->
     <section class="scene amenity with-parallax">
       <div class="background-wrapper">
-        <img loading="lazy" src="assets/img/amenity.jpg" alt="Desayuno de Meoran's Apart Hotel servido en bandeja">
+        <picture>
+          <source media="(max-width:767px)" srcset="assets/img/amenity-m.jpg">
+          <img loading="lazy" src="assets/img/amenity.jpg" alt="Desayuno de Meoran's Apart Hotel servido en bandeja">
+        </picture>
       </div>
 
       <article class="editorial-card amenity-card">
@@ -958,7 +971,10 @@
     <!-- 07 LOOK AROUND -->
     <section class="scene look-scene with-parallax" id="galeria">
       <div class="background-wrapper">
-        <img loading="lazy" src="assets/img/look.jpg" alt="Vista aérea de Libertador San Martín, Entre Ríos, con Meoran's Apart Hotel al fondo">
+        <picture>
+          <source media="(max-width:767px)" srcset="assets/img/look-m.jpg">
+          <img loading="lazy" src="assets/img/look.jpg" alt="Vista aérea de Libertador San Martín, Entre Ríos, con Meoran's Apart Hotel al fondo">
+        </picture>
       </div>
       <div class="scene-shade"></div>
 
@@ -976,7 +992,10 @@
     <!-- 08 LOCATION / "EVENTS" visual rhythm -->
     <section class="scene location-scene with-parallax" id="ubicacion">
       <div class="background-wrapper">
-        <img loading="lazy" src="assets/img/location.jpg" alt="Fachada de Meoran's Apart Hotel, calle Santa Fe">
+        <picture>
+          <source media="(max-width:767px)" srcset="assets/img/location-m.jpg">
+          <img loading="lazy" src="assets/img/location.jpg" alt="Fachada de Meoran's Apart Hotel, calle Santa Fe">
+        </picture>
       </div>
 
       <article class="editorial-card location-card">
