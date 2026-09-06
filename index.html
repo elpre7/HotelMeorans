@@ -709,7 +709,7 @@
        referencia), así que la capa de fondo no necesita el sobredimensionado
        del 168%: solo agrandaba la imagen 1,68x y la recortaba peor. */
     @media(max-width:767px){
-      .background-wrapper{top:0;height:100%}
+      .background-wrapper{top:0;height:100%;will-change:auto;backface-visibility:visible}
     }
 
     /* En móvil las tarjetas dejan de estar posicionadas en absoluto y pasan a
@@ -843,7 +843,7 @@
       <a href="#reservar">Reservar <small>06</small></a>
     </nav>
     <div class="overlay-photo">
-      <img src="assets/img/location.jpg" alt="Fachada de Meoran's Apart Hotel">
+      <img loading="lazy" src="assets/img/location.jpg" alt="Fachada de Meoran's Apart Hotel">
       <div class="overlay-caption">
         Rivadavia 801 · Libertador San Martín<br>
         Entre Ríos · Argentina
@@ -883,7 +883,7 @@
     <!-- 02 SOUL — enters immediately under hero -->
     <section class="scene soul with-parallax" id="historia">
       <div class="background-wrapper">
-        <img src="assets/img/soul.jpg" alt="Lobby de Meoran's Apart Hotel, con doble altura, recepción y living">
+        <img loading="lazy" src="assets/img/soul.jpg" alt="Lobby de Meoran's Apart Hotel, con doble altura, recepción y living">
       </div>
       <div class="scene-shade"></div>
 
@@ -900,7 +900,7 @@
     <!-- 03 YOUR STAY -->
     <section class="scene stay-scene with-parallax" id="estancia">
       <div class="background-wrapper">
-        <img src="assets/img/stay.jpg" alt="Habitación de Meoran's Apart Hotel con cama king y textiles artesanales">
+        <img loading="lazy" src="assets/img/stay.jpg" alt="Habitación de Meoran's Apart Hotel con cama king y textiles artesanales">
       </div>
 
       <article class="editorial-card stay-card">
@@ -934,7 +934,7 @@
     <!-- 05 AMENITY SCENE -->
     <section class="scene amenity with-parallax">
       <div class="background-wrapper">
-        <img src="assets/img/amenity.jpg" alt="Desayuno de Meoran's Apart Hotel servido en bandeja">
+        <img loading="lazy" src="assets/img/amenity.jpg" alt="Desayuno de Meoran's Apart Hotel servido en bandeja">
       </div>
 
       <article class="editorial-card amenity-card">
@@ -958,7 +958,7 @@
     <!-- 07 LOOK AROUND -->
     <section class="scene look-scene with-parallax" id="galeria">
       <div class="background-wrapper">
-        <img src="assets/img/look.jpg" alt="Vista aérea de Libertador San Martín, Entre Ríos, con Meoran's Apart Hotel al fondo">
+        <img loading="lazy" src="assets/img/look.jpg" alt="Vista aérea de Libertador San Martín, Entre Ríos, con Meoran's Apart Hotel al fondo">
       </div>
       <div class="scene-shade"></div>
 
@@ -976,7 +976,7 @@
     <!-- 08 LOCATION / "EVENTS" visual rhythm -->
     <section class="scene location-scene with-parallax" id="ubicacion">
       <div class="background-wrapper">
-        <img src="assets/img/location.jpg" alt="Fachada de Meoran's Apart Hotel, calle Santa Fe">
+        <img loading="lazy" src="assets/img/location.jpg" alt="Fachada de Meoran's Apart Hotel, calle Santa Fe">
       </div>
 
       <article class="editorial-card location-card">
