@@ -1021,13 +1021,15 @@
       </div>
 
       <form class="booking-grid" id="bookingForm">
+        <!-- El tope corta las fechas absurdas que deja tipear el campo nativo;
+             el piso lo pone el JS, porque depende de qué día es hoy. -->
         <div class="field">
           <label for="checkin">Llegada</label>
-          <input id="checkin" type="date" required>
+          <input id="checkin" type="date" max="2080-12-31" required>
         </div>
         <div class="field">
           <label for="checkout">Salida</label>
-          <input id="checkout" type="date" required>
+          <input id="checkout" type="date" max="2080-12-31" required>
         </div>
         <div class="field">
           <label for="guests">Huéspedes</label>
